@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/detailScreenFragment">
+
+    <fragment
+        android:id="@+id/detailScreenFragment"
+        android:name="com.example.rawggamesapp.DetailScreenFragment"
+        android:label="fragment_detail_screen"
+        tools:layout="@layout/fragment_detail_screen" />
+    <fragment
+        android:id="@+id/masterScreenFragment"
+        android:name="com.example.rawggamesapp.MasterScreenFragment"
+        android:label="fragment_master_screen"
+        tools:layout="@layout/fragment_master_screen" >
+        <action
+            android:id="@+id/action_masterScreenFragment_to_detailScreenFragment"
+            app:destination="@id/detailScreenFragment" />
+    </fragment>
+</navigation>
