@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MasterScreenViewModel @Inject constructor(
-    private val repository: GameRepositoryInterface,
+    private val repository: GameRepositoryInterface
 ) : ViewModel() {
 
     private val _gameList by lazy {

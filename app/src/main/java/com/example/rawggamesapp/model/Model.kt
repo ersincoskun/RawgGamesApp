@@ -19,7 +19,7 @@ class Model {
         val released:String,
         @SerializedName("background_image")
         val imageUrl:String,
-        val rating:Int,
+        val rating:Float,
         val playtime:Int,
         @PrimaryKey(autoGenerate = true)
         var uuid: Long? = null

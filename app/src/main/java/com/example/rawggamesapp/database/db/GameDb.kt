@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.rawggamesapp.database.dao.GameDao
 import com.example.rawggamesapp.model.Model
 
-@Database(entities = [Model.Game::class], version = 1)
+@Database(entities = [Model.Game::class], version = 2)
 abstract class GameDb:RoomDatabase() {
 
     abstract fun gameDao(): GameDao

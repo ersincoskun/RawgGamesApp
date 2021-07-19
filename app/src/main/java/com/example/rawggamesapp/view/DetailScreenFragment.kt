@@ -5,9 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.RequestManager
 import com.example.rawggamesapp.databinding.FragmentDetailScreenBinding
+import javax.inject.Inject
 
-class DetailScreenFragment : Fragment() {
+class DetailScreenFragment @Inject constructor(
+    val glide: RequestManager
+) : Fragment() {
 
     private var _binding: FragmentDetailScreenBinding? = null
     private val binding get() = _binding!!
