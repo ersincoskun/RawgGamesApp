@@ -29,7 +29,7 @@ class GameRepository @Inject constructor(
 
     override suspend fun getGamesFromApi(): Resource<Model.GameResult> {
         return try {
-            val response = retrofitCall.getGames()
+            val response = retrofitCall.getGamesFromApi()
             if (response.isSuccessful) {
                 response.body()?.let {
                     return@let Resource.success(it)

@@ -6,12 +6,15 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.RequestManager
 import com.example.rawggamesapp.databinding.GameItemBinding
 import com.example.rawggamesapp.model.Model
 import com.example.rawggamesapp.view.MasterScreenFragmentDirections
 import javax.inject.Inject
 
-class MasterScreenAdapter @Inject constructor() :
+class MasterScreenAdapter @Inject constructor(
+    private val glide: RequestManager
+) :
     RecyclerView.Adapter<MasterScreenAdapter.MasterScreenViewHolder>() {
 
     val games = mutableListOf<Model.Game>()
@@ -24,13 +27,14 @@ class MasterScreenAdapter @Inject constructor() :
     }
 
     override fun onBindViewHolder(holder: MasterScreenViewHolder, position: Int) {
-        holder.itemBinding.gameButton.text = games[position].name
-        holder.itemBinding.gameButton.setOnClickListener {
+        holder.itemBinding.gameNameTV.text = games[position].name
+        glide.load(games[position].imageUrl).into(holder.itemBinding.gameIV)
+        holder.itemBinding.gameItemCardView.setOnClickListener {
             val action =
                 MasterScreenFragmentDirections.actionMasterScreenFragmentToDetailScreenFragment(
                     games[position].gameId
                 )
-            Navigation.findNavController(holder.itemBinding.gameButton).navigate(action)
+            Navigation.findNavController(holder.itemBinding.gameItemCardView).navigate(action)
         }
     }
 

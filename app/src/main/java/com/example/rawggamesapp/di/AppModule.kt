@@ -36,7 +36,7 @@ class AppModule {
     @Provides
     fun injectRoomDatabase(@ApplicationContext context: Context) =
         Room.databaseBuilder(context, GameDb::class.java, "gameDb")
-            .fallbackToDestructiveMigrationFrom(1).build()
+            .fallbackToDestructiveMigrationFrom(2).build()
 
     @Singleton
     @Provides

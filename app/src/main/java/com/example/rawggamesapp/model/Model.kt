@@ -8,7 +8,8 @@ class Model {
 
     data class GameResult(
         val count:Int,
-        val results:List<Game>
+        val results:List<Game>,
+        val next:String
     )
 
     @Entity(tableName = "games")
@@ -21,6 +22,9 @@ class Model {
         val imageUrl:String,
         val rating:Float,
         val playtime:Int,
+        val updated:String,
+        val metacritic:Int,
+        val added:Int,
         @PrimaryKey(autoGenerate = true)
         var uuid: Long? = null
     )

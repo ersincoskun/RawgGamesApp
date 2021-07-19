@@ -30,22 +30,14 @@ class MasterScreenViewModel @Inject constructor(
         }
     }
 
-
     private fun insertGamesToDb(gameList: List<Model.Game>) = viewModelScope.launch {
         repository.deleteAll()
         repository.insertGames(gameList)
         _gameList.postValue(gameList)
     }
 
-    fun getGame(gameId:Int){
-        viewModelScope.launch {
-            System.out.println(repository.getGameFromDb(gameId))
-        }
-    }
-
-
     fun getGamesFromDb() = viewModelScope.launch {
-        _gameList.value=repository.getGamesFromDb()
+        _gameList.value = repository.getGamesFromDb()
         getGamesFromApi()
     }
 

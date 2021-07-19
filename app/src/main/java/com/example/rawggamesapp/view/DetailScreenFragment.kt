@@ -51,6 +51,9 @@ class DetailScreenFragment @Inject constructor(
             binding.gameReleasedTV.text = "Released: ${it.released}"
             binding.gameRatingTV.text = "Rating: ${it.rating}"
             binding.gamePlaytimeTV.text = "Play Time: ${it.playtime}"
+            binding.updatedTV.text="Updated: ${it.updated}"
+            binding.metacriticTV.text="Metacritic: ${it.metacritic}"
+            binding.addedTV.text="Added: ${it.added}"
         })
     }
 
