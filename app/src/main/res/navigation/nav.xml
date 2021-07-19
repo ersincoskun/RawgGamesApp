@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/detailScreenFragment"
-        android:name="com.example.rawggamesapp.DetailScreenFragment"
+        android:name="com.example.rawggamesapp.view.DetailScreenFragment"
         android:label="fragment_detail_screen"
         tools:layout="@layout/fragment_detail_screen" />
     <fragment
         android:id="@+id/masterScreenFragment"
-        android:name="com.example.rawggamesapp.MasterScreenFragment"
+        android:name="com.example.rawggamesapp.view.MasterScreenFragment"
         android:label="fragment_master_screen"
         tools:layout="@layout/fragment_master_screen" >
         <action
