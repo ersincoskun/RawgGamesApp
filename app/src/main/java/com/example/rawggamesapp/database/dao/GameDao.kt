@@ -9,7 +9,7 @@ import com.example.rawggamesapp.model.Model
 interface GameDao {
 
     @Insert
-    suspend fun insertGames(vararg gameList: Model.Game): List<Long>
+    suspend fun insertGames(vararg gameList: Model.Game)
 
     @Query("SELECT * FROM games")
     suspend fun getGames(): List<Model.Game>
