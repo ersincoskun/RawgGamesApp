@@ -14,6 +14,8 @@ interface GameDao {
     @Query("SELECT * FROM games")
     suspend fun getGames(): List<Model.Game>
 
+    @Query("SELECT * FROM games WHERE gameId= :gameId")
+    suspend fun getGame(gameId:Int): Model.Game
 
     @Query("DELETE FROM games ")
     suspend fun deleteAll()

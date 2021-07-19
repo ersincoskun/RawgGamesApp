@@ -9,6 +9,8 @@ interface GameRepositoryInterface {
 
     suspend fun getGamesFromDb(): List<Model.Game>
 
+    suspend fun getGameFromDb(gameId:Int): Model.Game
+
     suspend fun deleteAll()
 
     suspend fun getGamesFromApi(): Resource<Model.GameResult>

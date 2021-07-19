@@ -19,6 +19,10 @@ class GameRepository @Inject constructor(
         return gameDao.getGames()
     }
 
+    override suspend fun getGameFromDb(gameId:Int): Model.Game {
+        return gameDao.getGame(gameId)
+    }
+
     override suspend fun deleteAll() {
         gameDao.deleteAll()
     }

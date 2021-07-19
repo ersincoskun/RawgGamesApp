@@ -9,7 +9,11 @@
         android:id="@+id/detailScreenFragment"
         android:name="com.example.rawggamesapp.view.DetailScreenFragment"
         android:label="fragment_detail_screen"
-        tools:layout="@layout/fragment_detail_screen" />
+        tools:layout="@layout/fragment_detail_screen" >
+        <argument
+            android:name="gameId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/masterScreenFragment"
         android:name="com.example.rawggamesapp.view.MasterScreenFragment"

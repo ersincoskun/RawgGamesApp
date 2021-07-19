@@ -2,30 +2,19 @@ package com.example.rawggamesapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rawggamesapp.databinding.GameItemBinding
 import com.example.rawggamesapp.model.Model
+import com.example.rawggamesapp.view.MasterScreenFragmentDirections
 import javax.inject.Inject
 
-class MasterScreenAdapter @Inject constructor() : RecyclerView.Adapter<MasterScreenAdapter.MasterScreenViewHolder>() {
+class MasterScreenAdapter @Inject constructor() :
+    RecyclerView.Adapter<MasterScreenAdapter.MasterScreenViewHolder>() {
 
-    private val diffUtil = object : DiffUtil.ItemCallback<Model.Game>() {
-        override fun areItemsTheSame(oldItem: Model.Game, newItem: Model.Game): Boolean {
-            return oldItem == newItem
-        }
-
-        override fun areContentsTheSame(oldItem: Model.Game, newItem: Model.Game): Boolean {
-            return oldItem == newItem
-        }
-    }
-
-    private val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
-
-    var games: List<Model.Game>
-        get() = recyclerListDiffer.currentList
-        set(value) = recyclerListDiffer.submitList(value)
+    val games = mutableListOf<Model.Game>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MasterScreenViewHolder {
         val itemBinding =
@@ -36,6 +25,13 @@ class MasterScreenAdapter @Inject constructor() : RecyclerView.Adapter<MasterScr
 
     override fun onBindViewHolder(holder: MasterScreenViewHolder, position: Int) {
         holder.itemBinding.gameButton.text = games[position].name
+        holder.itemBinding.gameButton.setOnClickListener {
+            val action =
+                MasterScreenFragmentDirections.actionMasterScreenFragmentToDetailScreenFragment(
+                    games[position].gameId
+                )
+            Navigation.findNavController(holder.itemBinding.gameButton).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

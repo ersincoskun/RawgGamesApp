@@ -37,6 +37,12 @@ class MasterScreenViewModel @Inject constructor(
         _gameList.postValue(gameList)
     }
 
+    fun getGame(gameId:Int){
+        viewModelScope.launch {
+            System.out.println(repository.getGameFromDb(gameId))
+        }
+    }
+
 
     fun getGamesFromDb() = viewModelScope.launch {
         _gameList.value=repository.getGamesFromDb()

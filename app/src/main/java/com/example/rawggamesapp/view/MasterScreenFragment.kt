@@ -20,7 +20,6 @@ class MasterScreenFragment @Inject constructor(
     private val binding get() = _binding!!
     private lateinit var masterScreenViewModel: MasterScreenViewModel
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +45,9 @@ class MasterScreenFragment @Inject constructor(
     private fun observeData() {
         masterScreenViewModel.getGamesFromDb()
         masterScreenViewModel.gameList.observe(viewLifecycleOwner, Observer {
-            masterScreenAdapter.games=it
+            masterScreenAdapter.games.clear()
+            masterScreenAdapter.games.addAll(it)
+            masterScreenAdapter.notifyDataSetChanged()
         })
     }
 
