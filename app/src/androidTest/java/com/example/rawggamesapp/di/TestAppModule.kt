@@ -15,13 +15,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object TestAppModule {
-
     @Singleton
     @Provides
-    @Named("testDatabase")
+    @Named("test_database")
     fun injectInMemoryRoom(@ApplicationContext context: Context) =
         Room.inMemoryDatabaseBuilder(context, GameDb::class.java)
             .allowMainThreadQueries()
             .build()
-
 }
