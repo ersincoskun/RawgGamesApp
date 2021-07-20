@@ -7,7 +7,7 @@ class FakeGameRepository : GameRepositoryInterface {
 
     private val emptyGame = Model.Game(0, "", "", "", 2f, 0, "", 0, 0, 0)
     private val emptyGameForApi = Model.Game(1, "", "", "", 2f, 0, "", 0, 0, 0)
-    private val games = mutableListOf<Model.Game>(emptyGame)
+    private val games = mutableListOf(emptyGame)
 
     override suspend fun insertGames(gameList: List<Model.Game>) {
         games.addAll(gameList)
@@ -18,7 +18,20 @@ class FakeGameRepository : GameRepositoryInterface {
     }
 
     override suspend fun getGameFromDb(gameId: Int): Model.Game {
-        return Model.Game(gameId, "", "", "", 2f, 0, "", 0, 0, 0)
+        val gameList = listOf(
+            Model.Game(0, "", "", "", 2f, 0, "", 0, 0, 0),
+            Model.Game(1, "", "", "", 2f, 0, "", 0, 0, 0),
+            Model.Game(2, "", "", "", 2f, 0, "", 0, 0, 0),
+        )
+        var gameIndex = 0
+        var order = 0
+        gameList.forEach {
+            if (it.gameId == gameId) {
+                gameIndex = order
+            }
+            order++
+        }
+        return gameList[gameIndex]
     }
 
     override suspend fun deleteAll() {
