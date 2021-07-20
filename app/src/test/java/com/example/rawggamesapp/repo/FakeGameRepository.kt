@@ -5,7 +5,9 @@ import com.example.rawggamesapp.util.Resource
 
 class FakeGameRepository : GameRepositoryInterface {
 
-    private val games = mutableListOf<Model.Game>()
+    private val emptyGame = Model.Game(0, "", "", "", 2f, 0, "", 0, 0, 0)
+    private val emptyGameForApi = Model.Game(1, "", "", "", 2f, 0, "", 0, 0, 0)
+    private val games = mutableListOf<Model.Game>(emptyGame)
 
     override suspend fun insertGames(gameList: List<Model.Game>) {
         games.addAll(gameList)
@@ -25,6 +27,6 @@ class FakeGameRepository : GameRepositoryInterface {
     }
 
     override suspend fun getGamesFromApi(): Resource<Model.GameResult> {
-        return Resource.success(Model.GameResult(0, listOf(), ""))
+        return Resource.success(Model.GameResult(0, listOf(emptyGameForApi), ""))
     }
 }

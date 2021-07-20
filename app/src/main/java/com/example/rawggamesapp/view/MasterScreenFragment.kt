@@ -49,6 +49,7 @@ class MasterScreenFragment @Inject constructor(
             masterScreenAdapter.games.addAll(it)
             masterScreenAdapter.notifyDataSetChanged()
         })
+        masterScreenViewModel.getGamesFromApi()
     }
 
 }

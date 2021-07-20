@@ -1,5 +1,6 @@
 package com.example.rawggamesapp.viewmodel
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,7 +23,7 @@ class MasterScreenViewModel @Inject constructor(
         get() = _gameList
 
 
-    private fun getGamesFromApi() = viewModelScope.launch {
+    fun getGamesFromApi() = viewModelScope.launch {
         val gameResult = repository.getGamesFromApi()
         val gameList = gameResult.data?.results
         gameList?.let {
@@ -30,7 +31,8 @@ class MasterScreenViewModel @Inject constructor(
         }
     }
 
-    private fun insertGamesToDb(gameList: List<Model.Game>) = viewModelScope.launch {
+    @VisibleForTesting
+    fun insertGamesToDb(gameList: List<Model.Game>) = viewModelScope.launch {
         repository.deleteAll()
         repository.insertGames(gameList)
         _gameList.postValue(gameList)
@@ -38,7 +40,6 @@ class MasterScreenViewModel @Inject constructor(
 
     fun getGamesFromDb() = viewModelScope.launch {
         _gameList.value = repository.getGamesFromDb()
-        getGamesFromApi()
     }
 
 }
