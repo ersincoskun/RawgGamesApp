@@ -18,8 +18,7 @@ class FakeGameRepository : GameRepositoryInterface {
     }
 
     override suspend fun getGameFromDb(gameId: Int): Model.Game {
-        //return games
-        TODO()
+        return Model.Game(gameId, "", "", "", 2f, 0, "", 0, 0, 0)
     }
 
     override suspend fun deleteAll() {

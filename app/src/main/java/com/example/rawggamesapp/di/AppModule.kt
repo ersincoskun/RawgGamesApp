@@ -1,8 +1,6 @@
 package com.example.rawggamesapp.di
 
-import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
@@ -15,12 +13,10 @@ import com.example.rawggamesapp.database.db.GameDb
 import com.example.rawggamesapp.repo.GameRepository
 import com.example.rawggamesapp.repo.GameRepositoryInterface
 import com.example.rawggamesapp.util.util.BASE_URL
-import com.example.rawggamesapp.view.RawgGameFragmentFactoryEntryPoint
 import com.example.rawggamesapp.view.RawgGamesFragmentFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
