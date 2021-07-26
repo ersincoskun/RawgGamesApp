@@ -19,7 +19,7 @@ class GameRepository @Inject constructor(
         return gameDao.getGames()
     }
 
-    override suspend fun getGameFromDb(gameId:Int): Model.Game {
+    override suspend fun getGameFromDb(gameId: Int): Model.Game {
         return gameDao.getGame(gameId)
     }
 
@@ -32,14 +32,14 @@ class GameRepository @Inject constructor(
             val response = retrofitCall.getGamesFromApi()
             if (response.isSuccessful) {
                 response.body()?.let {
-                    return@let Resource.success(it)
-                } ?: Resource.error("Error", null)
+                    return@let Resource.Success(it)
+                } ?: Resource.Error("Error")
             } else {
-                Resource.error("Error", null)
+                Resource.Error("Error")
             }
 
         } catch (e: Exception) {
-            Resource.error("Please check your internet connection!", null)
+            Resource.Error("Please check your internet connection!")
         }
 
     }

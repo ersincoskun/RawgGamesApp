@@ -1,27 +1,11 @@
 package com.example.rawggamesapp.util
 
-data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
+sealed class Resource<out T>(val data: T? = null, val message: String? = null) {
 
-    companion object {
+    class Success<T>(data: T) : Resource<T>(data = data)
 
-        fun <T> success(data: T?): Resource<T> {
-            return Resource(Status.SUCCESS, data, null)
-        }
+    class Error<T>(errorMessage: String) : Resource<T>(message = errorMessage)
 
-        fun <T> error(msg: String, data: T?): Resource<T> {
-            return Resource(Status.ERROR, data, msg)
-        }
+    object Loading : Resource<Nothing>()
 
-        fun <T> loading(data: T?): Resource<T> {
-            return Resource(Status.LOADING, data, null)
-        }
-
-    }
-
-}
-
-enum class Status {
-    SUCCESS,
-    ERROR,
-    LOADING
 }

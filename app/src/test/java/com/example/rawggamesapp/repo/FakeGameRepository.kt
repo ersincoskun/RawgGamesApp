@@ -39,6 +39,6 @@ class FakeGameRepository : GameRepositoryInterface {
     }
 
     override suspend fun getGamesFromApi(): Resource<Model.GameResult> {
-        return Resource.success(Model.GameResult(0, listOf(emptyGameForApi), ""))
+        return Resource.Success(Model.GameResult(0, listOf(emptyGameForApi), ""))
     }
 }
